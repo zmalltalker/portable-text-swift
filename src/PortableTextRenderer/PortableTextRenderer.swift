@@ -1,4 +1,5 @@
 import SwiftUI
+import os.log
 
 /// A SwiftUI view that renders Portable Text JSON as native SwiftUI views.
 ///
@@ -13,6 +14,12 @@ public struct PortableTextRenderer: View {
     
     /// Internal state to track parsing and rendering errors.
     @State private var error: Error?
+    
+    /// Parsed blocks ready for rendering.
+    @State private var blocks: [PortableTextBlock] = []
+    
+    /// Private logger for debugging
+    private let logger = Logger(subsystem: "com.zmalltalker.portable-text-swift", category: "PortableTextRenderer")
     
     /// Creates a new Portable Text renderer with the specified JSON string.
     ///
@@ -29,13 +36,30 @@ public struct PortableTextRenderer: View {
         ZStack {
             if let error = error {
                 handleError(error)
+            } else if !blocks.isEmpty {
+                VStack(alignment: .leading, spacing: 12) {
+                    ForEach(0..<blocks.count, id: \.self) { index in
+                        blocks[index].render(with: nil)
+                    }
+                }
+                .padding()
             } else {
-                // Placeholder until we implement parsing and rendering
-                Text("Portable Text will render here")
+                Color.clear
                     .onAppear {
-                        // We'll implement parsing logic in later steps
+                        parseDocument()
                     }
             }
+        }
+    }
+    
+    /// Parses the Portable Text JSON document.
+    private func parseDocument() {
+        do {
+            blocks = try PortableTextParser.parsePortableText(json)
+            logger.debug("Successfully parsed document with \(blocks.count) blocks")
+        } catch {
+            logger.error("Error parsing document: \(error.localizedDescription)")
+            self.error = error
         }
     }
     
