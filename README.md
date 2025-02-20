@@ -77,15 +77,162 @@ This project includes a Makefile to help streamline the code generation process.
    7. `make prompt-modifiers`
    8. `make prompt-examples`
 
-### Tips for using the Makefile
+## Step-by-Step Implementation Guide
 
-* Each prompt is self-contained but builds on previous components
-* If Claude's response is incomplete, you can ask it to continue
-* You can modify the generated prompts in `output/current_prompt.md` before sending to Claude
-* To view all files that need to be implemented for a component, check the prompt content
-* When saving files, maintain the directory structure specified in the prompt
+Follow these instructions to implement each component of the SwiftUI Portable Text Renderer using the Makefile and Claude.
 
-For a complete implementation, follow the prompts in sequence from foundation to examples. Each prompt is designed to create code that integrates with previous components.
+### 1. Project Foundation
+
+```bash
+# Generate the prompt
+make prompt-foundation
+
+# Copy the prompt to clipboard (Mac)
+cat output/current_prompt.md | pbcopy
+
+# Create required directories
+mkdir -p src/Sources/PortableTextRenderer/Errors
+mkdir -p src/Sources/PortableTextRenderer/Rendering
+```
+
+After getting the code from Claude, save to:
+- `src/Package.swift`
+- `src/Sources/PortableTextRenderer/PortableTextRenderer.swift`
+- `src/Sources/PortableTextRenderer/Errors/PortableTextError.swift`
+- `src/Sources/PortableTextRenderer/Rendering/PortableTextBlock.swift`
+
+### 2. Data Models
+
+```bash
+# Generate the prompt
+make prompt-models
+
+# Copy the prompt to clipboard (Mac)
+cat output/current_prompt.md | pbcopy
+
+# Create required directories
+mkdir -p src/Sources/PortableTextRenderer/Models
+```
+
+After getting the code from Claude, save to:
+- `src/Sources/PortableTextRenderer/Models/PortableTextDocument.swift`
+- `src/Sources/PortableTextRenderer/Models/PortableTextBlockData.swift`
+- `src/Sources/PortableTextRenderer/Models/PortableTextSpan.swift`
+- `src/Sources/PortableTextRenderer/Models/PortableTextMarkDefinition.swift`
+
+### 3. JSON Parsing
+
+```bash
+# Generate the prompt
+make prompt-parsers
+
+# Copy the prompt to clipboard (Mac)
+cat output/current_prompt.md | pbcopy
+
+# Create required directories
+mkdir -p src/Sources/PortableTextRenderer/Parsing
+```
+
+After getting the code from Claude, save to:
+- `src/Sources/PortableTextRenderer/Parsing/PortableTextParser.swift`
+- Update `src/Sources/PortableTextRenderer/PortableTextRenderer.swift`
+
+### 4. Rendering Pipeline
+
+```bash
+# Generate the prompt
+make prompt-rendering
+
+# Copy the prompt to clipboard (Mac)
+cat output/current_prompt.md | pbcopy
+```
+
+After getting the code from Claude, save to:
+- `src/Sources/PortableTextRenderer/Rendering/BlockFactory.swift`
+- `src/Sources/PortableTextRenderer/Rendering/AttributedStringBuilder.swift`
+- Update `src/Sources/PortableTextRenderer/PortableTextRenderer.swift`
+
+### 5. Block Implementations
+
+```bash
+# Generate the prompt
+make prompt-blocks
+
+# Copy the prompt to clipboard (Mac)
+cat output/current_prompt.md | pbcopy
+
+# Create required directories
+mkdir -p src/Sources/PortableTextRenderer/Rendering/Blocks
+```
+
+After getting the code from Claude, save to:
+- `src/Sources/PortableTextRenderer/Rendering/Blocks/Paragraph.swift`
+- `src/Sources/PortableTextRenderer/Rendering/Blocks/Heading.swift`
+- `src/Sources/PortableTextRenderer/Rendering/Blocks/List.swift`
+- `src/Sources/PortableTextRenderer/Rendering/Blocks/CodeBlock.swift`
+- `src/Sources/PortableTextRenderer/Rendering/Blocks/Table.swift`
+- Update `src/Sources/PortableTextRenderer/Rendering/BlockFactory.swift`
+
+### 6. Styling System
+
+```bash
+# Generate the prompt
+make prompt-styling
+
+# Copy the prompt to clipboard (Mac)
+cat output/current_prompt.md | pbcopy
+
+# Create required directories
+mkdir -p src/Sources/PortableTextRenderer/Styling
+```
+
+After getting the code from Claude, save to:
+- `src/Sources/PortableTextRenderer/Styling/PortableTextStyle.swift`
+- `src/Sources/PortableTextRenderer/Styling/PortableTextStyler.swift`
+- Update `src/Sources/PortableTextRenderer/PortableTextRenderer.swift`
+
+### 7. SwiftUI Modifiers
+
+```bash
+# Generate the prompt
+make prompt-modifiers
+
+# Copy the prompt to clipboard (Mac)
+cat output/current_prompt.md | pbcopy
+
+# Create required directories
+mkdir -p src/Sources/PortableTextRenderer/Modifiers
+```
+
+After getting the code from Claude, save to:
+- `src/Sources/PortableTextRenderer/Modifiers/StyleModifiers.swift`
+- `src/Sources/PortableTextRenderer/Modifiers/RendererModifiers.swift`
+- `src/Sources/PortableTextRenderer/Modifiers/LinkModifiers.swift`
+- `src/Sources/PortableTextRenderer/Modifiers/ErrorViewModifiers.swift`
+- `src/Sources/PortableTextRenderer/Modifiers/TableOfContentsModifiers.swift`
+- `src/Sources/PortableTextRenderer/Modifiers/TextDirectionModifiers.swift`
+- Update `src/Sources/PortableTextRenderer/PortableTextRenderer.swift`
+
+### 8. Usage Examples
+
+```bash
+# Generate the prompt
+make prompt-examples
+
+# Copy the prompt to clipboard (Mac)
+cat output/current_prompt.md | pbcopy
+
+# Create required directories
+mkdir -p src/Sources/PortableTextRenderer/Examples
+```
+
+After getting the code from Claude, save to:
+- `src/Sources/PortableTextRenderer/Examples/BasicUsageExample.swift`
+- `src/Sources/PortableTextRenderer/Examples/AdvancedUsageExample.swift`
+- `src/Sources/PortableTextRenderer/Examples/StylingExample.swift`
+- `src/Sources/PortableTextRenderer/Examples/CustomRenderingExample.swift`
+- `src/Sources/PortableTextRenderer/Examples/ErrorHandlingExample.swift`
+- `src/Sources/PortableTextRenderer/Examples/TableOfContentsExample.swift`
 
 ## Features
 
