@@ -10,6 +10,38 @@ SwiftUI Portable Text Renderer converts Portable Text JSON into native SwiftUI v
 ![iOS 15.0+](https://img.shields.io/badge/iOS-15.0%2B-blue)
 ![macOS 12.0+](https://img.shields.io/badge/macOS-12.0%2B-blue)
 
+## Development
+
+This project includes a Makefile to help streamline the code generation process. The Makefile generates prompts that can be used with AI assistants like Claude to create implementation code following the specification.
+
+### Using the Makefile
+
+1. Make sure you have the following files in your repository:
+   - `spec.md` - The detailed specification
+   - `todo.md` - The implementation checklist
+   - `Makefile` - The code generation helper
+
+2. Available Makefile commands:
+   ```
+   make prompt-foundation   # Generate prompt for project foundation
+   make prompt-models       # Generate prompt for data models
+   make prompt-parsers      # Generate prompt for JSON parsing
+   make prompt-rendering    # Generate prompt for rendering pipeline
+   make prompt-blocks       # Generate prompt for block implementations
+   make prompt-styling      # Generate prompt for styling system
+   make prompt-modifiers    # Generate prompt for SwiftUI modifiers
+   make prompt-examples     # Generate prompt for usage examples
+   ```
+
+3. Development workflow:
+   1. Run a prompt command (e.g., `make prompt-foundation`)
+   2. Copy the generated prompt from `output/current_prompt.md`
+   3. Paste the prompt into an AI assistant like Claude
+   4. Save the generated code to the appropriate files in the `src` directory
+   5. Continue with the next component
+
+For a complete implementation, follow the prompts in sequence from foundation to examples.
+
 ## Features
 
 - 📝 Render Portable Text as native SwiftUI views
