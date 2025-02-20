@@ -31,16 +31,61 @@ This project includes a Makefile to help streamline the code generation process.
    make prompt-styling      # Generate prompt for styling system
    make prompt-modifiers    # Generate prompt for SwiftUI modifiers
    make prompt-examples     # Generate prompt for usage examples
+   make help                # Display available commands and usage instructions
    ```
 
-3. Development workflow:
-   1. Run a prompt command (e.g., `make prompt-foundation`)
-   2. Copy the generated prompt from `output/current_prompt.md`
-   3. Paste the prompt into an AI assistant like Claude
-   4. Save the generated code to the appropriate files in the `src` directory
-   5. Continue with the next component
+3. Detailed development workflow:
 
-For a complete implementation, follow the prompts in sequence from foundation to examples.
+   #### Step 1: Generate a prompt
+   ```bash
+   make prompt-foundation
+   ```
+   This creates a detailed prompt in `output/current_prompt.md` that extracts relevant sections from your specification and todo list.
+
+   #### Step 2: Copy the prompt to clipboard (Mac)
+   ```bash
+   cat output/current_prompt.md | pbcopy
+   ```
+   Now the prompt is in your clipboard, ready to paste into Claude.
+
+   #### Step 3: Get code from Claude
+   1. Start a new conversation with Claude
+   2. Paste the prompt from your clipboard
+   3. Claude will generate the requested implementation files
+   
+   #### Step 4: Save the generated code
+   For each file that Claude generates:
+   1. Copy the code block (everything between the triple backticks)
+   2. Create the appropriate directory if needed:
+      ```bash
+      mkdir -p src/PortableTextRenderer/Errors
+      ```
+   3. Save the code to the appropriate file:
+      ```bash
+      vim src/PortableTextRenderer/Errors/PortableTextError.swift
+      # or use your preferred editor
+      ```
+
+   #### Step 5: Proceed to the next component
+   Follow the sequence of prompts in order:
+   1. `make prompt-foundation`
+   2. `make prompt-models`
+   3. `make prompt-parsers`
+   4. `make prompt-rendering`
+   5. `make prompt-blocks`
+   6. `make prompt-styling`
+   7. `make prompt-modifiers`
+   8. `make prompt-examples`
+
+### Tips for using the Makefile
+
+* Each prompt is self-contained but builds on previous components
+* If Claude's response is incomplete, you can ask it to continue
+* You can modify the generated prompts in `output/current_prompt.md` before sending to Claude
+* To view all files that need to be implemented for a component, check the prompt content
+* When saving files, maintain the directory structure specified in the prompt
+
+For a complete implementation, follow the prompts in sequence from foundation to examples. Each prompt is designed to create code that integrates with previous components.
 
 ## Features
 
