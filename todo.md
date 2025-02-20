@@ -1,22 +1,22 @@
 # SwiftUI Portable Text Renderer Implementation Checklist
 
 ## Phase 1: Project Setup & Foundation
-- [ ] Create Swift Package with SwiftUI dependency
-- [ ] Set up directory structure (Models, Rendering, Styling, Errors)
-- [ ] Create basic PortableTextRenderer view struct
-- [ ] Implement PortableTextError enum with all required cases
-- [ ] Implement initial error handling infrastructure
-- [ ] Create core data models for Portable Text:
-  - [ ] PortableTextDocument
-  - [ ] PortableTextBlockData
-  - [ ] PortableTextSpan
-  - [ ] PortableTextMarkDefinition
-- [ ] Define PortableTextBlock protocol
-- [ ] Create empty PortableTextStyle struct placeholder
+- [x] Create Swift Package with SwiftUI dependency
+- [x] Set up directory structure (Models, Rendering, Styling, Errors)
+- [x] Create basic PortableTextRenderer view struct
+- [x] Implement PortableTextError enum with all required cases
+- [x] Implement initial error handling infrastructure
+- [x] Create core data models for Portable Text:
+  - [x] PortableTextDocument
+  - [x] PortableTextBlockData
+  - [x] PortableTextSpan
+  - [x] PortableTextMarkDefinition
+- [x] Define PortableTextBlock protocol
+- [x] Create empty PortableTextStyle struct placeholder
 
 ## Phase 2: Parsing & Basic Rendering
-- [ ] Implement JSON parsing logic in PortableTextParser
-- [ ] Connect parser to PortableTextRenderer
+- [x] Implement JSON parsing logic in PortableTextParser
+- [x] Connect parser to PortableTextRenderer
 - [ ] Create first block implementation (Paragraph)
 - [ ] Implement BlockFactory for creating blocks from data
 - [ ] Test basic paragraph rendering with plain text
@@ -29,36 +29,7 @@
   - [ ] Implement basic mark handling (bold, italic, underline)
   - [ ] Update Paragraph to use AttributedString
 
-## Phase 3: Block Types Implementation
-- [ ] Implement Heading block:
-  - [ ] Create Heading struct with level detection
-  - [ ] Add appropriate styling based on heading level
-  - [ ] Update BlockFactory to handle headings
-  - [ ] Add convenience modifier for heading styles
-- [ ] Implement List block:
-  - [ ] Support ordered and unordered lists
-  - [ ] Handle list item markers/numbers
-  - [ ] Support basic indentation
-  - [ ] Update BlockFactory for lists
-- [ ] Implement CodeBlock:
-  - [ ] Create monospaced text rendering
-  - [ ] Preserve whitespace and indentation
-  - [ ] Add appropriate styling defaults
-  - [ ] Update BlockFactory for code blocks
-- [ ] Implement simple Table block:
-  - [ ] Create grid-based layout
-  - [ ] Handle basic table structure
-  - [ ] Support header rows
-  - [ ] Update BlockFactory for tables
-
-## Phase 4: Advanced Features
-- [ ] Implement link handling:
-  - [ ] Update AttributedStringBuilder for links
-  - [ ] Create CustomLinkHandler type
-  - [ ] Add linkHandler property to renderer
-  - [ ] Create portableTextLinkHandler modifier
-- [ ] Implement custom renderer system:
-  - [ ] Create CustomBlockRenderer type
+ Create CustomBlockRenderer type
   - [ ] Add storage for custom renderers
   - [ ] Create portableTextCustomRenderer modifier
   - [ ] Update rendering pipeline to check for custom renderers
